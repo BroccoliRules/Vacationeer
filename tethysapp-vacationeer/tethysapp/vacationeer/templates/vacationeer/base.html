@@ -1,0 +1,41 @@
+{% extends "tethys_apps/app_base.html" %}
+
+{% load static %}
+
+{% block title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_icon %}
+  {# The path you provided in your app.py is accessible through the tethys_app.icon context variable #}
+  <img src="{% if 'http' in tethys_app.icon %}{{ tethys_app.icon }}{% else %}{% static tethys_app.icon %}{% endif %}" />
+{% endblock %}
+
+{# The name you provided in your app.py is accessible through the tethys_app.name context variable #}
+{% block app_title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_navigation_items %}
+  {% url 'vacationeer:home' as home_url %}
+  {% url 'vacationeer:add_place' as add_place_url %}
+  {% url 'vacationeer:places' as list_place_url %}
+  {% url 'vacationeer:Leaflet' as recommendations_url %}
+  <li class="title">Navigation</li>
+  <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home</a></li>
+  <li class="{% if request.path == list_place_url %}active{% endif %}"><a href="{{ list_place_url }}">List of My Activities</a></li>
+  <li class="{% if request.path == add_place_url %}active{% endif %}"><a href="{{ add_place_url }}">Add Activity</a></li>
+  <li class="{% if request.path == recommendations_url %}active{% endif %}"><a href="{{ recommendations_url }}">Recommended Activities</a></li>
+{% endblock %}
+
+{% block app_content %}
+{% endblock %}
+
+{% block app_actions %}
+{% endblock %}
+
+{% block content_dependent_styles %}
+  {{ block.super }}
+  <link href="{% static 'vacationeer/css/main.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'vacationeer/js/main.js' %}" type="text/javascript"></script>
+{% endblock %}

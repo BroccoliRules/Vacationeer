@@ -1,0 +1,7 @@
+{% extends "vacationeer/base.html" %}
+{% load tethys_gizmos %}
+
+{% block app_content %}
+  <h1>My Activities</h1>
+  {% gizmo places_table %}
+{% endblock %}

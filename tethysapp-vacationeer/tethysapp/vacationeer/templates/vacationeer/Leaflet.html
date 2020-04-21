@@ -1,0 +1,67 @@
+{% extends "vacationeer/base.html" %}
+{% load tethys_gizmos %}
+{% block app_content %}
+<html>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+ <style>
+  body,h1 {
+  font-family: "Raleway", sans-serif
+  color: #00008B;
+  }
+  body, html {
+    height: 100%;
+    text-align: center;
+    background-color: #FFFAF0;
+    background-image: url(bridge.jfif) center fixed;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+</style>
+    <style>
+      #mapid { height: 50%;
+      width: 95%;
+      padding: 5px;
+      position: absolute;
+      left: 25px;
+      right: 25px}
+    </style>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin="">
+</script>
+
+
+    <body>
+      <h2>My Recommendations</h2>
+      <div id='mapid'></div>
+
+    </body>
+
+
+
+    <script>
+        var map = L.map('mapid').setView([48.678678, 14.358416], 14);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let Cities = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-0bc744ec99cb47029d68d9481c3ef944/wms?', {
+            layers: 'Cities',
+            format: 'image/png', //depends on what you want to load in
+            transparent: true,
+        }).addTo(map);
+
+         let Polygon = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-0bc744ec99cb47029d68d9481c3ef944/wms?', {
+            layers: 'Polygon',
+            format: 'image/png', //depends on what you want to load in
+            transparent: true,
+        }).addTo(map);
+    </script>
+
+</html>
+{% endblock %}

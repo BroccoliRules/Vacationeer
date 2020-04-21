@@ -1,0 +1,25 @@
+{% extends "vacationeer/base.html" %}
+{% load tethys_gizmos %}
+
+{% block app_content %}
+  <h1>Add Activity</h1>
+  <!-- {% gizmo type_input %} -->
+  <!-- {% gizmo name_input %} -->
+  <!-- {% gizmo description_input %} -->
+  <form id="add-place-form" method="post">
+    {% csrf_token %}
+    <div class="form-group{% if location_error %} has-error{% endif %}">
+      <label class="control-label">Location</label>
+      {% gizmo location_input %}
+      {% if location_error %}<p class="help-block">{{ location_error }}</p>{% endif %}
+    </div>
+    {% gizmo type_input %}
+    {% gizmo name_input %}
+    {% gizmo description_input %}
+  </form>
+{% endblock %}
+
+{% block app_actions %}
+  {% gizmo add_button %}
+  {% gizmo cancel_button %}
+{% endblock %}

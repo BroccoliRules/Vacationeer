@@ -1,0 +1,15 @@
+{% extends "vacationeer/base.html" %}
+{% load tethys_gizmos static %}
+
+{% block app_content %}
+{% gizmo vacationeer_map %}
+{% endblock %}
+
+{% block app_actions %}
+  {% gizmo add_place_button %}
+{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <link href="{% static 'vacationeer/css/map.css' %}" rel="stylesheet"/>
+{% endblock %}
