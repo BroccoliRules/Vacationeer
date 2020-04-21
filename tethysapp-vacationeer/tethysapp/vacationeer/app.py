@@ -8,11 +8,11 @@ class Vacationeer(TethysAppBase):
 
     name = 'Vacationeer'
     index = 'vacationeer:home'
-    icon = 'vacationeer/images/icon.gif'
+    icon = 'vacationeer/images/CoACR.png'
     package = 'vacationeer'
     root_url = 'vacationeer'
     color = '#2980b9'
-    description = 'The purpose of this app is to help find the right vacation spots in Costa Rica that match your interests. The app will grow as the community adds new places to it.'
+    description = 'This app will help find the right vacation spots in Costa Rica that match your interests.'
     tags = ''
     enable_feedback = False
     feedback_emails = []
