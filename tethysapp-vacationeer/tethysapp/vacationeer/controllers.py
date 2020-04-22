@@ -259,3 +259,11 @@ def list_places(request, app_workspace):
     }
 
     return render(request, 'vacationeer/list_places.html', context)
+
+
+@login_required()
+def Leaflet(request):
+    """
+    Controller for Leaflet workspace
+    """
+    return render(request, 'vacationeer/Leaflet.html')

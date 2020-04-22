@@ -22,16 +22,15 @@
   }
 </style>
     <style>
-      #mapid { height: 50%;
-      width: 95%;
+      #mapid { height: 75%;
+      width: 80%;
       padding: 5px;
-      position: absolute;
-      left: 25px;
-      right: 25px}
+      position: absolute;}
     </style>
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin="">
+<script
+  src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin="">
 </script>
 
 
@@ -44,23 +43,31 @@
 
 
     <script>
-        var map = L.map('mapid').setView([48.678678, 14.358416], 14);
+        var map = L.map('mapid').setView([9.933149, -84.079149], 8);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        let Cities = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-0bc744ec99cb47029d68d9481c3ef944/wms?', {
-            layers: 'Cities',
-            format: 'image/png', //depends on what you want to load in
-            transparent: true,
-        }).addTo(map);
+        let Waterbodies = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-368ad337700c455a975ae8d91e6caada?', {
+            layers: 'Waterbodies',
+            format: 'image/png',
+        }).addTo(map)
 
-         let Polygon = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-0bc744ec99cb47029d68d9481c3ef944/wms?', {
-            layers: 'Polygon',
-            format: 'image/png', //depends on what you want to load in
-            transparent: true,
-        }).addTo(map);
+        var markerpaz = L.marker([10.206601, -84.164138]).addTo(map);
+          markerpaz.bindPopup("<b>La Paz Waterfalls</b><br>Sightseeing").openPopup();
+        var markernos = L.marker([9.978041, -85.648726]).addTo(map);
+          markernos.bindPopup("<b>Nosara</b><br>Relax and Adventure").openPopup();
+        var markerfort = L.marker([10.471862, -84.643554]).addTo(map);
+            markerfort.bindPopup("<b>La Fortuna</b><br>Sighteeing and Adventure").openPopup();
+        var circle = L.circle([8.395965, -83.135773], {
+            color: '#002597',
+            fillColor: '#002597',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(mymap);
+            circle.bindPopup("<b>Pavones</b><br>Best Surfing");
+
     </script>
 
 </html>

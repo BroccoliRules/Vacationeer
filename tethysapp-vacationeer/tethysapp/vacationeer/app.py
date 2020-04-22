@@ -39,6 +39,11 @@ class Vacationeer(TethysAppBase):
                 url='vacationeer/places',
                 controller='vacationeer.controllers.list_places'
             ),
+            UrlMap(
+                name='Leaflet',
+                url='vacationeer/Leaflet',
+                controller='vacationeer.controllers.Leaflet'
+            ),
         )
 
         return url_maps
